@@ -5,7 +5,12 @@ import { getPublicAssets } from "./assets.mjs"
 const app = express()
 app.use(cors())
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+})
+
 
 app.get("/passes/:userId", async (req, res) => {
     const userId = req.params.userId
